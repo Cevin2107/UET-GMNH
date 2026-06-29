@@ -29,6 +29,17 @@ export default function Hero() {
             </a>
           </div>
         </div>
+
+        <div className="hero__illustration" aria-hidden="true">
+          <div className="hero__orbit hero__orbit--1" />
+          <div className="hero__orbit hero__orbit--2" />
+          <div className="hero__orbit hero__orbit--3" />
+          <div className="hero__core">UET</div>
+          <div className="hero__chip hero__chip--ai">AI</div>
+          <div className="hero__chip hero__chip--chip">{'</>'}</div>
+          <div className="hero__chip hero__chip--robot">🤖</div>
+          <div className="hero__chip hero__chip--data">DATA</div>
+        </div>
       </div>
     </section>
   );

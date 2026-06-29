@@ -751,6 +751,10 @@ img {
     gap: 20px;
   }
 
+  .hero__illustration {
+    display: none;
+  }
+
   .hero__badge {
     font-size: 12px;
     padding: 5px 12px;
