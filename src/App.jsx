@@ -15,7 +15,7 @@ export default function App() {
     if (typeof window === 'undefined') return false;
     const saved = localStorage.getItem('uet-dark');
     if (saved !== null) return saved === 'true';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return false;
   });
 
   useEffect(() => {
