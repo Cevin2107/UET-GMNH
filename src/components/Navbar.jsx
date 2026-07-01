@@ -2,10 +2,14 @@ import { useScrollSpy } from '../hooks/useScrollSpy';
 
 const LOGO_URL = 'https://uet.edu.vn/wp-content/uploads/2026/01/Logo1.png';
 
-export default function Navbar({ dark, onToggleDark }) {
+export default function Navbar({ dark, onToggleDark, onShowMajors }) {
   const scrolled = useScrollSpy();
 
   const scrollTo = (id) => {
+    if (id === 'majors' && onShowMajors) {
+      onShowMajors();
+      return;
+    }
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -18,6 +22,7 @@ export default function Navbar({ dark, onToggleDark }) {
 
         <div className="navbar__links">
           <button onClick={() => scrollTo('top')}>Trang chủ</button>
+          <button onClick={() => scrollTo('quicklinks')}>Liên kết nhanh</button>
           <button onClick={() => scrollTo('majors')}>Ngành học</button>
           <button onClick={() => scrollTo('contact')}>Liên hệ</button>
         </div>

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import QuickLinks from './components/QuickLinks';
 import SearchBar from './components/SearchBar';
 import FilterPills from './components/FilterPills';
 import MajorGrid from './components/MajorGrid';
@@ -22,6 +23,25 @@ export default function App() {
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
     localStorage.setItem('uet-dark', String(dark));
   }, [dark]);
+
+  const [showMajors, setShowMajors] = useState(false);
+
+  useEffect(() => {
+    if (showMajors) {
+      const timer = setTimeout(() => {
+        document.getElementById('majors')?.scrollIntoView({ behavior: 'smooth' });
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [showMajors]);
+
+  const handleShowMajors = () => {
+    if (showMajors) {
+      document.getElementById('majors')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      setShowMajors(true);
+    }
+  };
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -50,24 +70,27 @@ export default function App() {
 
   return (
     <>
-      <Navbar dark={dark} onToggleDark={() => setDark((d) => !d)} />
+      <Navbar dark={dark} onToggleDark={() => setDark((d) => !d)} onShowMajors={handleShowMajors} />
       <Hero />
+      <QuickLinks onShowMajors={handleShowMajors} />
 
-      <main id="majors" className="container">
-        <div className="controls">
-          <SearchBar value={query} onChange={setQuery} />
-          <FilterPills categories={categories} active={activeCategory} onChange={setActiveCategory} />
-        </div>
-
-        {filtered.length === 0 ? (
-          <div className="empty">
-            <div className="empty__emoji">🔍</div>
-            <p>Không tìm thấy ngành học phù hợp.</p>
+      {showMajors && (
+        <main id="majors" className="container">
+          <div className="controls">
+            <SearchBar value={query} onChange={setQuery} />
+            <FilterPills categories={categories} active={activeCategory} onChange={setActiveCategory} />
           </div>
-        ) : (
-          <MajorGrid groups={groups} />
-        )}
-      </main>
+
+          {filtered.length === 0 ? (
+            <div className="empty">
+              <div className="empty__emoji">🔍</div>
+              <p>Không tìm thấy ngành học phù hợp.</p>
+            </div>
+          ) : (
+            <MajorGrid groups={groups} />
+          )}
+        </main>
+      )}
 
       <Footer />
       <BackToTop />

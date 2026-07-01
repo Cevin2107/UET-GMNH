@@ -7,26 +7,17 @@ export default function Hero() {
     <section id="top" className="hero">
       <div className={`hero__inner ${visible ? 'is-visible' : ''}`} ref={ref}>
         <div className="hero__content">
-          <div className="hero__badge">Trường Đại học Công nghệ · ĐHQGHN</div>
+          <div className="hero__badge">Trường Đại học Công nghệ - ĐHQGHN</div>
           <h1 className="hero__title">
-            Khám phá các ngành học
-            <span className="hero__title-accent">Trường Đại học Công nghệ - ĐHQGHN</span>
+            Đồng hành cùng sĩ tử tìm hiểu thông tin về Trường Đại học Công nghệ - ĐHQGHN
           </h1>
           <p className="hero__subtitle">
-            Lựa chọn ngành học phù hợp với bản thân và tìm hiểu chi tiết thông qua các bài viết giới thiệu.
+            Tổng hợp đầy đủ các kênh thông tin chính thức và bài viết giới thiệu từng ngành học, giúp sĩ tử dễ dàng tìm hiểu và lựa chọn ngành học phù hợp.
           </p>
           <div className="hero__actions">
-            <button className="hero__cta" onClick={() => document.getElementById('majors')?.scrollIntoView({ behavior: 'smooth' })}>
+            <button className="hero__cta" onClick={() => document.getElementById('quicklinks')?.scrollIntoView({ behavior: 'smooth' })}>
               Khám phá ngay
             </button>
-            <a className="hero__social" href="https://www.facebook.com/TVTS.UET.VNU" target="_blank" rel="noopener noreferrer">
-              <span className="hero__social-icon" aria-hidden="true">📣</span>
-              Page Tuyển sinh
-            </a>
-            <a className="hero__social hero__social--group" href="https://www.facebook.com/groups/uet.tvts" target="_blank" rel="noopener noreferrer">
-              <span className="hero__social-icon" aria-hidden="true">👥</span>
-              Group TVTS
-            </a>
           </div>
         </div>
 
