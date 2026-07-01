@@ -629,8 +629,9 @@ img {
 
 /* ============ QUICKLINKS ============ */
 .quicklinks {
-  background: #FFFFFF;
+  background: var(--card);
   padding: 80px 24px;
+  transition: background var(--transition);
 }
 
 .quicklinks__inner {
@@ -700,6 +701,17 @@ img {
   transform: scale(1.03);
   box-shadow: var(--shadow-lg);
   background: linear-gradient(135deg, #0077D4, #3AA8FF);
+}
+
+:root[data-theme='dark'] .quicklinks__card {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+:root[data-theme='dark'] .quicklinks__card:hover {
+  background: var(--hover);
+  border-color: var(--primary);
 }
 
 .quicklinks__card-icon {
